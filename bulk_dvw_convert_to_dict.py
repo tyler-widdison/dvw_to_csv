@@ -1,15 +1,3 @@
-
-#def multi(path = 'C:\\Users\\Tyler.Widdison\\Desktop\\Python\\test'):
-#    results = []
-#    for dvw_file in os.listdir(path):
-#        results.append(all_events(f'{path}\\{dvw_file}'))
-#    return results
-
-#def find_first_serve(lines):
-#    for idx, line in enumerate(lines):
-#        if line[0:4] in ['a01S', 'a02S', '*01S', '*02S']:
-#            return idx
-
 def player_parse(file):
     team_1_data = linecache.getline(file, 19)
     team_1_split_data = team_1_data.split(';')
@@ -316,11 +304,6 @@ def serve_details(first_portion, single_event):
     if first_portion[3:4] == 'S':
         single_event['xycoordinate'] = first_portion[10:12]
 
-#def main(path = 'C:\\Users\\Tyler.Widdison\\Desktop\\Python\\test'):
-#    all_the_events = multi(path)
-#    print(all_the_events)
-
-
 import linecache
 from itertools import islice
 import pandas as pd
@@ -335,7 +318,7 @@ from pandas.io.json import json_normalize
 from unidecode import unidecode
 
 file_names = []
-for file in os.listdir("C:\\Users\\Tyler.Widdison\\Desktop\\Python\\"):
+for file in os.listdir(""):
     try:
         if file.endswith(".dvw"):
             file_names.append(all_events(file))
@@ -361,178 +344,5 @@ df['away_teamid'] = df['away_teamid'].fillna(method='bfill')
 df['mid_coordinate'] = df['mid_coordinate'].str.replace('-1-1','').replace('', np.nan, regex=True)
 df['end_coordinate'] = df['end_coordinate'].str.replace('-1-1','').replace('', np.nan, regex=True)
 
-
-
-df.to_csv('test333.csv')
-
-
-df = pd.DataFrame()
-df['ID'] = dat[ID].astype(str)
-df['period'] = dat[period_id].astype(int)
-df['player_name'] = dat[player]
-df['team_name'] = dat[team]
-df['time'] = dat[time].astype(int)
-df['metric'] = dat[metric_val]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#'Test' 
-    #with open('attempt_2.json', 'w') as outfile:
-    #    json.dump(data, outfile)
-    #
-    #with open('attempt_2.json', 'r') as read_file:
-    #    ddd = json.load(read_file)
-    #
-    #
-    #df = pd.DataFrame(test)
-    #
-    #df.replace(r'^\s*$', np.NAN, regex=True)
-    #
-    #df.to_csv('boom.csv')
-    #
-    #import matplotlib.pyplot as plt
-    #import seaborn as sns
-    #import numpy as np
-    #sns.set()
-    #%matplotlib inline
-    #lin = f.readlines()
-    #match_id_line = lin[21]
-    #match_id_split = match_id_line.split(';')
-    #match_id = match_id_split[5]
-
-    #
-    #
-    ##data = all_events(file)
-    #data = multi()
-    ##main()
-    ##
-    ###descrption(first_portion, single_event)
-    ###
-    ###def convertToDescription(firstPortion):
-    ###    skillAbbreviation = firstPortion[3:4]
-    ###    pointAbbreviation = firstPortion[1:2]
-    ###    if skillAbbreviation == 'S':
-    ###        return 'serve'
-    ###    if skillAbbreviation == 'R':
-    ###        return 'reception'
-    ###    #...
-    ###    if pointAbbreviation == 'p':
-    ###        return 'point'
-    ###
-    ###single_event['description'] = convertToDescription(first_portion)
-    #
-    #attacks = [e for e in data if e['descrption'] == 'attack']
-    #
-    #
-    ##import re
-    ##import pprint
-    ###from pathlib import Path
-    ###
-    ###resumes_dir = Path("test")
-    ###for path in resumes_dir.glob("*.dvw"):
-    ###    with path.open() as f:
-    ###        lines = islice(f, 73, 5000)
-    ###        for file_ in lines:
-    ###            line = file_.split(';')
-    ###            print(line)
-    ##
-    #blocks = []
-    #allbe = [p for p in data if p['descrption'] in ['serve', 'receive', 'set', 'attack', 'block', 'dig']]
-    #for block in allbe:
-    #    player = f"{block['teamid']} {block['player_number']} {block['name']} - "
-    #    details = f"{block['descrption']} {block['details']}"
-    #    grade = (block['grade'])
-    #    blocks.append([player, details, grade])
-    #
-
-
-
-
-    #fig=plt.figure() #set up the figures
-    #fig.set_size_inches(7, 5)
-    #ax=fig.add_subplot(1,1,1)
-    #draw_pitch(ax) #overlay our different objects on the pitch
-    #plt.ylim(-2, 82)
-    #plt.xlim(-2, 122)
-    #plt.axis('off')
-    #plt.show()
-    #
-    #from matplotlib import pyplot as plt
-    #from matplotlib.patches import Rectangle
-    #someX, someY = 0.5, 0.5
-    #fig,ax = plt.subplots()
-    #currentAxis = plt.gca()
-    #currentAxis.add_patch(Rectangle((someX - 0.1, someY - 0.1), 0.2, 0.2,
-    #                      alpha=1, facecolor='none'))
-
-
-    #newl = []
-    #with open('&test.dvw') as lines:
-    #    f = lines.readlines()
-    #    line = f.split(';')
-    #
-    #fbso = 'fbso'
-    #
-    #test = []
-    #with open('&test.dvw', 'r', encoding='utf-8') as f:
-    #    for file_ in f:
-    #        line = file_.split(';')
-    #        first = line[0]
-    #        if first[3:4] == 'S':
-    #
-    #            
-    #filne = '&test.dvw'
-    #
-    #with open(filne, 'r+') as f:
-    #    for line in f:
-    #        if line[3:4] == 'S':
-    #            next(f, '2')         
-    #
-    #s = open('&test.dvw')
-    #
-    #def daten(s): 
-    #   s = iter(s)
-    #   for line in s:  
-    #       if line[3:4] == 'S':
-    #            return [line, next(s), next(s), next(s)]
-    #   else:
-    #       raise SomeException
-    #
-    #for test in daten(s):
-    #    print(test)
-    #
-    #
-    #daten(s)
-    #
-    #    for idx, line in enumerate(lines):
-    #        if line[0:4] in ['a01S', 'a02S', '*01S', '*02S']:
-    #            return idx
-
-
-#<<<<< FORMER
-
-#def all_events(file):
-#    all_events = []
-#    home_score = '00'
-#    away_score = '00'
-#    with open(file, 'r', encoding='utf-8') as f:
-#        lines = islice(f, 73, 5000)
-#        for file_ in lines:
-#            line = file_.split(';')
-#            skill = convert_event(file, line, home_score, away_score)
-#            all_events.append(skill)
-#            if skill['descrption'] == 'point':
-#                home_score = skill['home_score']
-#                away_score = skill['away_score']
-#        return all_events
+# save main csv
+df.to_csv('dvws_parsed.csv')
